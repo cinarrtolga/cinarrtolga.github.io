@@ -15,6 +15,7 @@
       --accent: #58a6ff;
       --badge-bg: #21262d;
       --badge-border: rgba(201, 209, 217, 0.1);
+      --focus-hover-bg: rgba(88, 166, 255, 0.03);
     }
 
     html[data-theme='light'] {
@@ -26,6 +27,7 @@
       --accent: #0969da;
       --badge-bg: #eaeef2;
       --badge-border: rgba(36, 41, 47, 0.1);
+      --focus-hover-bg: rgba(9, 105, 218, 0.02);
     }
 
     /* --- BASE LAYOUT --- */
@@ -151,14 +153,35 @@
       text-decoration: underline;
     }
 
-    /* --- BULLET LISTS --- */
-    .focus-list {
-      margin: 0;
-      padding-left: 1.2rem;
+    /* --- PROFESSIONAL CORE FOCUS LAYOUT --- */
+    .focus-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
     }
 
-    .focus-list li {
-      margin-bottom: 8px;
+    .focus-item {
+      padding-left: 1rem;
+      border-left: 2px solid var(--border);
+      transition: border-color 0.2s ease, background-color 0.2s ease;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .focus-item:hover {
+      border-left-color: var(--accent);
+      background-color: var(--focus-hover-bg);
+    }
+
+    .focus-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--fg);
+      margin-bottom: 2px;
+    }
+
+    .focus-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
     }
 
     /* --- SKILLS GRID & UNIFORM BADGES --- */
@@ -244,11 +267,20 @@
 
     <section>
       <h2>Core Focus Areas</h2>
-      <ul class="focus-list">
-        <li><strong>Systems Integration:</strong> Resilient backend mechanics integrated with complex third-party software.</li>
-        <li><strong>Cloud Infrastructure:</strong> Designing and maintaining distributed architectures and microservices utilizing Microsoft Azure and Terraform.</li>
-        <li><strong>Cross-Platform Development:</strong> Architecting native desktop and mobile cross-runtime interfaces via React, React Native, and ElectronJS.</li>
-      </ul>
+      <div class="focus-container">
+        <div class="focus-item">
+          <div class="focus-title">Systems Integration</div>
+          <div class="focus-desc">Resilient backend mechanics integrated with complex third-party software.</div>
+        </div>
+        <div class="focus-item">
+          <div class="focus-title">Cloud Infrastructure</div>
+          <div class="focus-desc">Designing and maintaining distributed architectures and microservices utilizing Microsoft Azure and Terraform.</div>
+        </div>
+        <div class="focus-item">
+          <div class="focus-title">Cross-Platform Development</div>
+          <div class="focus-desc">Architecting native desktop and mobile cross-runtime interfaces via React, React Native, and ElectronJS.</div>
+        </div>
+      </div>
     </section>
 
     <section>
