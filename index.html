@@ -16,8 +16,7 @@
       
       /* Badges Dark Mode */
       --badge-bg: #21262d;
-      --badge-core-bg: rgba(88, 166, 255, 0.1);
-      --badge-core-border: rgba(88, 166, 255, 0.3);
+      --badge-border: rgba(201, 209, 217, 0.1);
     }
 
     html[data-theme='light'] {
@@ -30,8 +29,7 @@
       
       /* Badges Light Mode */
       --badge-bg: #eaeef2;
-      --badge-core-bg: rgba(9, 105, 218, 0.08);
-      --badge-core-border: rgba(9, 105, 218, 0.3);
+      --badge-border: rgba(36, 41, 47, 0.1);
     }
 
     /* --- BASE STYLES --- */
@@ -177,29 +175,22 @@
       gap: 8px;
     }
 
-    .skill-badge {
+    /* Tüm span'lar için tek tip, uniform stil */
+    .skills-container span {
       display: inline-block;
       background-color: var(--badge-bg);
       color: var(--fg);
       font-size: 0.85rem;
       font-weight: 500;
       padding: 6px 14px;
-      border-radius: 20px; /* Kept smooth round styling for all badges */
-      border: 1px solid var(--border);
+      border-radius: 20px; /* Stadyum tipi tam yuvarlak kenar */
+      border: 1px solid var(--badge-border);
       transition: all 0.2s ease-in-out;
       cursor: default;
       user-select: none;
     }
 
-    /* Visual highlight for Core Tech stack */
-    .skill-badge.core {
-      background-color: var(--badge-core-bg);
-      color: var(--accent);
-      border-color: var(--badge-core-border);
-      font-weight: 600;
-    }
-
-    .skill-badge:hover {
+    .skills-container span:hover {
       transform: translateY(-1px);
       border-color: var(--accent);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -241,20 +232,20 @@
 
     <section>
       <h2>Skills & Expertise</h2>
-      <p class="skills-subtitle">Core technologies, frameworks, and tools used in development lifecycles.</p>
+      <p class="skills-subtitle">Key technologies, frameworks, and tools used throughout my career.</p>
       
       <div class="skills-container">
-        <div class="skill-badge core">Microsoft Azure</div>
-        <div class="skill-badge core">.NET</div>
-        <div class="skill-badge core">JavaScript</div>
-        <div class="skill-badge core">TypeScript</div>
-        <div class="skill-badge core">React / React Native</div>
-        <div class="skill-badge">Microservices</div>
-        <div class="skill-badge">Node.js</div>
-        <div class="skill-badge">Terraform</div>
-        <div class="skill-badge">NoSQL</div>
-        <div class="skill-badge">ElectronJS</div>
-        <div class="skill-badge">Software Documentation</div>
+        <span>Microsoft Azure</span>
+        <span>.NET</span>
+        <span>JavaScript</span>
+        <span>TypeScript</span>
+        <span>React / React Native</span>
+        <span>Microservices</span>
+        <span>Node.js</span>
+        <span>Terraform</span>
+        <span>NoSQL</span>
+        <span>ElectronJS</span>
+        <span>Software Documentation</span>
       </div>
     </section>
 
