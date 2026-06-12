@@ -28,6 +28,10 @@
       --card: var(--card-dark);
       --border: var(--border-dark);
       --accent: var(--accent-dark);
+      /* Badges için dark mode renkleri */
+      --badge-bg: #21262d;
+      --badge-core-bg: rgba(88, 166, 255, 0.1);
+      --badge-core-border: rgba(88, 166, 255, 0.3);
     }
 
     html[data-theme='light'] {
@@ -37,6 +41,10 @@
       --card: var(--card-light);
       --border: var(--border-light);
       --accent: var(--accent-light);
+      /* Badges için light mode renkleri */
+      --badge-bg: #eaeef2;
+      --badge-core-bg: rgba(9, 105, 218, 0.08);
+      --badge-core-border: rgba(9, 105, 218, 0.3);
     }
 
     body {
@@ -139,7 +147,7 @@
       border-radius: 6px;
       background: var(--card);
       padding: 1.5rem;
-      transition: background 0.3s ease;
+      transition: background 0.3s ease, border-color 0.3s ease;
     }
 
     h2 {
@@ -149,16 +157,6 @@
       border-bottom: 1px solid var(--border);
       padding-bottom: 0.5rem;
       margin-bottom: 1rem;
-    }
-
-    .skills span {
-      display: inline-block;
-      background: rgba(0, 0, 0, 0.05);
-      padding: 6px 12px;
-      margin: 6px 6px 0 0;
-      border-radius: 20px;
-      font-size: 0.9em;
-      border: 1px solid var(--border);
     }
 
     a {
@@ -181,6 +179,46 @@
       margin-top: 3rem;
     }
 
+    /* --- MODERNIZED SKILLS SECTION STYLES --- */
+    .skills-subtitle {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin: -0.5rem 0 1.2rem 0;
+    }
+
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-badge {
+      background-color: var(--badge-bg);
+      color: var(--fg);
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      transition: all 0.2s ease-in-out;
+      cursor: default;
+      user-select: none;
+    }
+
+    /* Highlight core stack with theme accent color */
+    .skill-badge.core {
+      background-color: var(--badge-core-bg);
+      color: var(--accent);
+      border-color: var(--badge-core-border);
+      font-weight: 600;
+    }
+
+    .skill-badge:hover {
+      transform: translateY(-1px);
+      border-color: var(--accent);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
     @media (max-width: 600px) {
       header {
         flex-direction: column;
@@ -192,69 +230,6 @@
         padding-left: 0;
       }
     }
-
-    .skills-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 35px;
-            max-width: 750px;
-            width: 100%;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
-        }
-
-        .skills-header h2 {
-            font-size: 1.5rem;
-            color: var(--text-main);
-            font-weight: 700;
-            margin: 0 0 6px 0;
-            letter-spacing: -0.025em;
-        }
-
-        .skills-header p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin: 0;
-        }
-
-        .divider {
-            height: 2px;
-            background: var(--primary-color);
-            width: 45px;
-            margin: 18px 0 28px 0;
-            border-radius: 2px;
-        }
-
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .skill-badge {
-            background-color: var(--badge-bg);
-            color: #334155;
-            font-size: 0.85rem;
-            font-weight: 600;
-            padding: 8px 16px;
-            border-radius: 6px;
-            border: 1px solid var(--border-color);
-            transition: all 0.2s ease-in-out;
-            cursor: default;
-            user-select: none;
-        }
-
-        /* Core technologies highlighted */
-        .skill-badge.core {
-            background-color: var(--core-badge-bg);
-            color: var(--core-badge-text);
-            border-color: var(--core-badge-border);
-        }
-
-        .skill-badge:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-        }
   </style>
 </head>
 <body>
@@ -265,7 +240,6 @@
       <h1>Tolga Cinar</h1>
       <p>💻 Full Stack Developer</p>
     </div>
-    <!-- Circular Theme Toggle Icon in the nav -->
     <div class="theme-toggle" id="themeToggle" title="Toggle theme">
       <span class="sun">🌞</span>
       <span class="moon">🌙</span>
@@ -276,63 +250,29 @@
     <section>
       <h2>About</h2>
       <p>I am a professional Software Developer with over a decade of international experience, having worked in Turkiye from 2014 until relocating to the United Kingdom in May 2021. Throughout my career, I have delivered robust software solutions across a diverse range of industries, including Automotive, Construction, Hospitality & Retail, Real Estate, and Buying Groups. My recent expertise focuses heavily on the healthcare sector, developing complex systems integrated with multiple third parties, including the NHS.</p>
-        <p>As a full-stack engineer, I specialize in building scalable cloud architecture and microservices using a modern tech stack centered around C#, .NET, Node.js, Microsoft Azure, React, and DevOps practices. My approach to software engineering focuses on creating reliable, high-performance technology that solves complex business challenges and ensures seamless system integration.</p>
+      <p>As a full-stack engineer, I specialize in building scalable cloud architecture and microservices using a modern tech stack centered around C#, .NET, Node.js, Microsoft Azure, React, and DevOps practices. My approach to software engineering focuses on creating reliable, high-performance technology that solves complex business challenges and ensures seamless system integration.</p>
     </section>
 
     <section>
-      <div class="skills-card">
-        <div class="skills-header">
-            <h2>Skills & Expertise</h2>
-            <p>Core technologies, frameworks, and tools used in development lifecycles.</p>
-        </div>
-        
-        <div class="divider"></div>
-
-        <div class="skills-container">
-            <div class="skill-badge core">Microsoft Azure</div>
-            <div class="skill-badge core">.NET</div>
-            <div class="skill-badge core">JavaScript</div>
-            <div class="skill-badge core">TypeScript</div>
-            <div class="skill-badge core">React / React Native</div>
-            <div class="skill-badge">Microservices</div>
-            <div class="skill-badge">Node.js</div>
-            <div class="skill-badge">Terraform</div>
-            <div class="skill-badge">NoSQL</div>
-            <div class="skill-badge">ElectronJS</div>
-            <div class="skill-badge">Software Documentation</div>
-        </div>
-    </div>
+      <h2>Skills & Expertise</h2>
+      <p class="skills-subtitle">Core technologies, frameworks, and tools used in development lifecycles.</p>
+      
+      <div class="skills-container">
+        <div class="skill-badge core">Microsoft Azure</div>
+        <div class="skill-badge core">.NET</div>
+        <div class="skill-badge core">JavaScript</div>
+        <div class="skill-badge core">TypeScript</div>
+        <div class="skill-badge core">React / React Native</div>
+        <div class="skill-badge">Microservices</div>
+        <div class="skill-badge">Node.js</div>
+        <div class="skill-badge">Terraform</div>
+        <div class="skill-badge">NoSQL</div>
+        <div class="skill-badge">ElectronJS</div>
+        <div class="skill-badge">Software Documentation</div>
+      </div>
     </section>
 
     <section>
       <h2>Contact</h2>
       <p>
-        🐙 <a href="https://github.com/cinarrtolga" target="_blank">github.com/cinarrtolga</a> | 💼 <a target="_blank" href="https://uk.linkedin.com/in/tolga-cinar">uk.linkedin.com/in/tolga-cinar</a>
-      </p>
-    </section>
-  </main>
-
-  <footer>
-    &copy; 2025
-  </footer>
-
-  <script>
-    const root = document.documentElement;
-    const toggle = document.getElementById('themeToggle');
-
-    function setTheme(theme) {
-      root.setAttribute('data-theme', theme);
-      localStorage.setItem('theme', theme);
-    }
-
-    toggle.addEventListener('click', () => {
-      const current = root.getAttribute('data-theme');
-      setTheme(current === 'dark' ? 'light' : 'dark');
-    });
-
-    const savedTheme = localStorage.getItem('theme');
-    setTheme(savedTheme || 'dark');
-  </script>
-
-</body>
-</html>
+        🐙 <a href="https://
