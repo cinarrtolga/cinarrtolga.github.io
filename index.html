@@ -13,8 +13,6 @@
       --card: #161b22;
       --border: #30363d;
       --accent: #58a6ff;
-      
-      /* Badges Dark Mode */
       --badge-bg: #21262d;
       --badge-border: rgba(201, 209, 217, 0.1);
     }
@@ -26,8 +24,6 @@
       --card: #ffffff;
       --border: #d0d7de;
       --accent: #0969da;
-      
-      /* Badges Light Mode */
       --badge-bg: #eaeef2;
       --badge-border: rgba(36, 41, 47, 0.1);
     }
@@ -47,7 +43,7 @@
       max-width: 900px;
       margin: 0 auto 2rem;
       border-bottom: 1px solid var(--border);
-      padding-bottom: 1rem;
+      padding-bottom: 1.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -57,6 +53,7 @@
       width: 80px;
       height: 80px;
       border-radius: 50%;
+      object-fit: cover;
     }
 
     .info {
@@ -72,6 +69,22 @@
     header p {
       color: var(--muted);
       margin-top: 4px;
+      margin-bottom: 8px;
+    }
+
+    /* Meta Bilgi Satırı (Lokasyon, Vize, Deneyim) */
+    .meta-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
 
     /* --- THEME TOGGLE BUTTON --- */
@@ -98,29 +111,12 @@
       font-size: 1.5rem;
     }
 
-    .theme-toggle .moon {
-      display: none;
-    }
-
-    html[data-theme='dark'] .theme-toggle .moon {
-      display: inline-block;
-    }
-
-    html[data-theme='dark'] .theme-toggle .sun {
-      display: none;
-    }
-
-    html[data-theme='light'] .theme-toggle .sun {
-      display: inline-block;
-    }
-
-    html[data-theme='light'] .theme-toggle .moon {
-      transform: rotate(180deg);
-    }
-
-    html[data-theme='dark'] .theme-toggle .sun {
-      transform: rotate(180deg);
-    }
+    .theme-toggle .moon { display: none; }
+    html[data-theme='dark'] .theme-toggle .moon { display: inline-block; }
+    html[data-theme='dark'] .theme-toggle .sun { display: none; }
+    html[data-theme='light'] .theme-toggle .sun { display: inline-block; }
+    html[data-theme='light'] .theme-toggle .moon { transform: rotate(180deg); }
+    html[data-theme='dark'] .theme-toggle .sun { transform: rotate(180deg); }
 
     /* --- STRUCTURE & LAYOUT --- */
     main {
@@ -175,7 +171,6 @@
       gap: 8px;
     }
 
-    /* Tüm span'lar için tek tip, uniform stil */
     .skills-container span {
       display: inline-block;
       background-color: var(--badge-bg);
@@ -183,7 +178,7 @@
       font-size: 0.85rem;
       font-weight: 500;
       padding: 6px 14px;
-      border-radius: 20px; /* Stadyum tipi tam yuvarlak kenar */
+      border-radius: 20px;
       border: 1px solid var(--badge-border);
       transition: all 0.2s ease-in-out;
       cursor: default;
@@ -205,6 +200,11 @@
 
       .info {
         padding-left: 0;
+        margin-bottom: 1rem;
+      }
+
+      .meta-badges {
+        justify-content: center;
       }
     }
   </style>
@@ -215,7 +215,11 @@
     <img src="pp-web.jpeg" alt="Profile Picture">
     <div class="info">
       <h1>Tolga Cinar</h1>
-      <p>💻 Full Stack Developer</p>
+      <p>💻 Senior Full Stack Developer</p>
+      
+      <div class="meta-badges">
+        <div class="meta-item">📍 United Kingdom</div>
+        </div>
     </div>
     <div class="theme-toggle" id="themeToggle" title="Toggle theme">
       <span class="sun">🌞</span>
@@ -250,7 +254,7 @@
     </section>
 
     <section>
-      <h2>Contact</h2>
+      <h2>Contact & Profiles</h2>
       <p>
         🐙 <a href="https://github.com/cinarrtolga" target="_blank">github.com/cinarrtolga</a> | 💼 <a target="_blank" href="https://uk.linkedin.com/in/tolga-cinar">uk.linkedin.com/in/tolga-cinar</a>
       </p>
