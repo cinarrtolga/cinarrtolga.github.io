@@ -9,70 +9,80 @@
       --bg: #0d1117;
       --fg: #c9d1d9;
       --muted: #8b949e;
-      --card: #161b22;
-      --border: #30363d;
+      --border: #21262d;
       --accent: #58a6ff;
       --status-bg: rgba(46, 160, 67, 0.15);
       --status-fg: #3fb950;
     }
 
     html[data-theme='light'] {
-      --bg: #f6f8fa;
-      --fg: #24292f;
-      --muted: #57606a;
-      --card: #ffffff;
+      --bg: #ffffff;
+      --fg: #1f2328;
+      --muted: #656d76;
       --border: #d0d7de;
       --accent: #0969da;
       --status-bg: rgba(26, 127, 55, 0.1);
       --status-fg: #1a7f37;
     }
 
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background-color: var(--bg);
       color: var(--fg);
       line-height: 1.6;
-      padding: 2rem;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      padding: 2.5rem 1.5rem;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    main, header {
+      max-width: 680px;
+      margin: 0 auto;
     }
 
     header {
-      max-width: 800px;
-      margin: 0 auto 1.5rem;
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
       border-bottom: 1px solid var(--border);
-      padding-bottom: 1rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
     header img {
-      width: 80px;
-      height: 80px;
+      width: 72px;
+      height: 72px;
       border-radius: 50%;
       object-fit: cover;
     }
 
-    .info {
-      flex-grow: 1;
-      padding-left: 1rem;
-    }
-
     header h1 {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
+      font-weight: 600;
       margin: 0;
+      letter-spacing: -0.02em;
     }
 
     header p {
       color: var(--muted);
-      margin: 4px 0 6px 0;
+      margin: 2px 0 6px 0;
+      font-size: 0.95rem;
     }
 
     .meta-info {
       display: flex;
-      gap: 12px;
-      font-size: 0.85rem;
+      gap: 10px;
+      font-size: 0.8rem;
       color: var(--muted);
       align-items: center;
     }
@@ -84,9 +94,8 @@
       background-color: var(--status-bg);
       color: var(--status-fg);
       font-weight: 500;
-      padding: 1px 8px;
-      border-radius: 10px;
-      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 12px;
     }
 
     .status-dot {
@@ -98,8 +107,14 @@
 
     .theme-toggle {
       cursor: pointer;
-      font-size: 1.4rem;
+      font-size: 1.2rem;
       user-select: none;
+      opacity: 0.8;
+      transition: opacity 0.2s ease;
+    }
+
+    .theme-toggle:hover {
+      opacity: 1;
     }
 
     .theme-toggle .moon { display: none; }
@@ -107,40 +122,33 @@
     html[data-theme='dark'] .theme-toggle .sun { display: none; }
     html[data-theme='light'] .theme-toggle .sun { display: inline; }
 
-    main {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
     section {
-      margin-bottom: 1.5rem;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      background: var(--card);
-      padding: 1.25rem;
+      margin-bottom: 2rem;
     }
 
     h2 {
-      color: var(--accent);
-      margin-top: 0;
-      font-size: 1.2rem;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 0.4rem;
-      margin-bottom: 0.8rem;
+      font-size: 1.05rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      margin: 0 0 0.75rem 0;
     }
 
     p {
-      margin: 0 0 0.8rem 0;
+      margin: 0 0 1rem 0;
+      font-size: 0.95rem;
     }
     p:last-child { margin-bottom: 0; }
 
     ul {
       margin: 0;
       padding-left: 1.2rem;
+      font-size: 0.95rem;
     }
 
     li {
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.5rem;
     }
     li:last-child { margin-bottom: 0; }
 
@@ -154,23 +162,24 @@
     }
 
     footer {
-      text-align: center;
+      max-width: 680px;
+      margin: 3rem auto 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
       color: var(--muted);
       font-size: 0.8rem;
-      margin-top: 2rem;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 520px) {
       header {
         flex-direction: column;
-        text-align: center;
+        align-items: flex-start;
+        gap: 1rem;
       }
-      .info {
-        padding-left: 0;
-        margin: 0.8rem 0;
-      }
-      .meta-info {
-        justify-content: center;
+      .theme-toggle {
+        position: absolute;
+        top: 2.5rem;
+        right: 1.5rem;
       }
     }
   </style>
@@ -178,13 +187,15 @@
 <body>
 
   <header>
-    <img src="pp-web.jpeg" alt="Tolga Cinar">
-    <div class="info">
-      <h1>Tolga Cinar</h1>
-      <p>Senior Full Stack Developer</p>
-      <div class="meta-info">
-        <span>📍 United Kingdom</span>
-        <span class="status-badge"><span class="status-dot"></span> Open to Opportunities</span>
+    <div class="header-left">
+      <img src="pp-web.jpeg" alt="Tolga Cinar">
+      <div class="info">
+        <h1>Tolga Cinar</h1>
+        <p>Senior Full Stack Developer</p>
+        <div class="meta-info">
+          <span>📍 United Kingdom</span>
+          <span class="status-badge"><span class="status-dot"></span> Open to Opportunities</span>
+        </div>
       </div>
     </div>
     <div class="theme-toggle" id="themeToggle" title="Toggle theme">
@@ -196,7 +207,7 @@
   <main>
     <section>
       <h2>Background</h2>
-      <p>I am a professional Software Developer, working since 2014 in Turkiye until relocating to the United Kingdom in May 2021. Throughout my career, I have delivered software solutions across a diverse range of industries, including Automotive, Construction, Hospitality & Retail, Real Estate, and Buying Groups, with recent expertise focusing heavily on the healthcare sector integrated with complex third parties including the NHS.</p>
+      <p>I am a Software Developer, working since 2014 in Turkiye until relocating to the United Kingdom in May 2021. Throughout my career, I have delivered software solutions across a diverse range of industries, including Automotive, Construction, Hospitality & Retail, Real Estate, and Buying Groups, with recent expertise focusing heavily on the healthcare sector integrated with complex third parties including the NHS.</p>
       <p>As a full-stack developer, I specialize in building scalable cloud architecture and microservices using a modern tech stack centered around C#, .NET, Node.js, Microsoft Azure, React, and DevOps practices. My approach focuses on creating reliable, high-performance systems that solve complex integration challenges.</p>
     </section>
 
