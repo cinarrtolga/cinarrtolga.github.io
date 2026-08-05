@@ -3,28 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Tolga Cinar - Portfolio</title>
+  <title>Tolga Cinar - Senior Full Stack Developer</title>
   <style>
     :root, html[data-theme='dark'] {
-      --bg: #0d1117;
-      --fg: #c9d1d9;
+      --bg: #0b0f17;
+      --card-bg: rgba(22, 27, 34, 0.7);
+      --card-border: #21262d;
+      --card-hover-border: #388bfd66;
+      --fg: #e6edf3;
       --muted: #8b949e;
-      --card: #161b22;
-      --border: #30363d;
-      --accent: #58a6ff;
+      --accent: #4493f8;
+      --accent-gradient: linear-gradient(135deg, #58a6ff 0%, #bc8cff 100%);
       --status-bg: rgba(46, 160, 67, 0.15);
       --status-fg: #3fb950;
+      --chip-bg: #161b22;
+      --chip-border: #30363d;
+      --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
     }
 
     html[data-theme='light'] {
-      --bg: #f6f8fa;
-      --fg: #24292f;
-      --muted: #57606a;
-      --card: #ffffff;
-      --border: #d0d7de;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --card-border: #e2e8f0;
+      --card-hover-border: #0969da44;
+      --fg: #0f172a;
+      --muted: #64748b;
       --accent: #0969da;
+      --accent-gradient: linear-gradient(135deg, #0969da 0%, #8a2be2 100%);
       --status-bg: rgba(26, 127, 55, 0.1);
       --status-fg: #1a7f37;
+      --chip-bg: #f1f5f9;
+      --chip-border: #e2e8f0;
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
     }
 
     * {
@@ -33,47 +43,65 @@
 
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background-color: var(--bg);
       color: var(--fg);
       line-height: 1.6;
-      padding: 2rem 1rem;
+      padding: 3rem 1rem;
       transition: background-color 0.3s ease, color 0.3s ease;
+      min-height: 100vh;
     }
 
-    header {
+    .container {
       max-width: 760px;
-      margin: 0 auto 1.5rem;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 1.25rem;
+      margin: 0 auto;
+    }
+
+    /* HEADER */
+    header {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding-bottom: 2rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .profile-wrap {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
     }
 
     header img {
-      width: 76px;
-      height: 76px;
+      width: 84px;
+      height: 84px;
       border-radius: 50%;
       object-fit: cover;
-      border: 1px solid var(--border);
+      border: 2px solid var(--card-border);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease;
     }
 
-    .info {
-      flex-grow: 1;
-      padding-left: 1.25rem;
+    header img:hover {
+      transform: scale(1.03);
     }
 
-    header h1 {
-      font-size: 1.75rem;
+    .info h1 {
+      font-size: 1.85rem;
       margin: 0;
-      letter-spacing: -0.02em;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    header p {
+    .info p {
       color: var(--muted);
-      margin: 3px 0 6px 0;
-      font-size: 0.95rem;
+      margin: 4px 0 10px 0;
+      font-size: 1rem;
+      font-weight: 500;
     }
 
     .meta-info {
@@ -82,38 +110,64 @@
       font-size: 0.85rem;
       color: var(--muted);
       align-items: center;
+      flex-wrap: wrap;
     }
 
     .status-badge {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       background-color: var(--status-bg);
       color: var(--status-fg);
-      font-weight: 500;
-      padding: 2px 8px;
-      border-radius: 12px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
       font-size: 0.78rem;
     }
 
     .status-dot {
-      width: 6px;
-      height: 6px;
+      width: 7px;
+      height: 7px;
       background-color: var(--status-fg);
       border-radius: 50%;
+      position: relative;
+    }
+
+    /* Live pulse effect */
+    .status-dot::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-color: var(--status-fg);
+      border-radius: 50%;
+      animation: pulse 1.8s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.8; }
+      100% { transform: scale(2.8); opacity: 0; }
     }
 
     .theme-toggle {
       cursor: pointer;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       user-select: none;
-      padding: 8px;
-      border-radius: 50%;
-      transition: background 0.2s ease;
+      padding: 10px;
+      border-radius: 12px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .theme-toggle:hover {
-      background-color: var(--card);
+      border-color: var(--accent);
+      transform: translateY(-2px);
     }
 
     .theme-toggle .moon { display: none; }
@@ -121,35 +175,49 @@
     html[data-theme='dark'] .theme-toggle .sun { display: none; }
     html[data-theme='light'] .theme-toggle .sun { display: inline; }
 
-    main {
-      max-width: 760px;
-      margin: 0 auto;
+    /* SECTIONS & CARDS */
+    section {
+      margin-bottom: 1.5rem;
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      background: var(--card-bg);
+      backdrop-filter: blur(8px);
+      padding: 1.6rem 1.75rem;
+      box-shadow: var(--shadow);
+      transition: transform 0.25s ease, border-color 0.25s ease;
     }
 
-    /* RAFINE KART YAPILARI */
-    section {
-      margin-bottom: 1.25rem;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      background: var(--card);
-      padding: 1.4rem 1.5rem;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    section:hover {
+      border-color: var(--card-hover-border);
+      transform: translateY(-2px);
     }
 
     h2 {
-      color: var(--accent);
+      color: var(--fg);
       margin-top: 0;
       font-size: 1.15rem;
       font-weight: 600;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 0.5rem;
-      margin-bottom: 0.9rem;
+      margin-bottom: 1rem;
       letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    h2::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 16px;
+      background: var(--accent-gradient);
+      border-radius: 4px;
     }
 
     p {
-      margin: 0 0 0.85rem 0;
+      margin: 0 0 1rem 0;
       font-size: 0.95rem;
+      color: var(--fg);
+      opacity: 0.9;
     }
     p:last-child { margin-bottom: 0; }
 
@@ -159,99 +227,167 @@
     }
 
     li {
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.6rem;
       font-size: 0.95rem;
     }
     li:last-child { margin-bottom: 0; }
+    li strong { color: var(--fg); }
 
-    a {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 500;
+    /* SKILLS BADGES */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 0.5rem;
     }
 
-    a:hover {
-      text-decoration: underline;
+    .skill-chip {
+      background: var(--chip-bg);
+      border: 1px solid var(--chip-border);
+      color: var(--fg);
+      font-size: 0.82rem;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .skill-chip:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* CONTACT LINKS */
+    .contact-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .contact-card {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      background: var(--chip-bg);
+      border: 1px solid var(--chip-border);
+      border-radius: 8px;
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .contact-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      text-decoration: none;
     }
 
     footer {
       text-align: center;
       color: var(--muted);
-      font-size: 0.8rem;
-      margin-top: 2rem;
+      font-size: 0.85rem;
+      margin-top: 2.5rem;
     }
 
     @media (max-width: 600px) {
+      body { padding: 1.5rem 1rem; }
       header {
         flex-direction: column;
-        text-align: center;
+        align-items: flex-start;
+        gap: 1rem;
       }
-      .info {
-        padding-left: 0;
-        margin: 0.8rem 0;
+      .profile-wrap {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
       }
-      .meta-info {
-        justify-content: center;
+      .theme-toggle {
+        position: absolute;
+        top: 1.5rem;
+        right: 1rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <img src="pp-web.jpeg" alt="Tolga Cinar">
-    <div class="info">
-      <h1>Tolga Cinar</h1>
-      <p>Senior Full Stack Developer</p>
-      <div class="meta-info">
-        <span>📍 United Kingdom</span>
-        <span class="status-badge"><span class="status-dot"></span> Open to Opportunities</span>
+  <div class="container">
+    <header>
+      <div class="profile-wrap">
+        <img src="pp-web.jpeg" alt="Tolga Cinar">
+        <div class="info">
+          <h1>Tolga Cinar</h1>
+          <p>Senior Full Stack Developer</p>
+          <div class="meta-info">
+            <span>📍 United Kingdom</span>
+            <span class="status-badge"><span class="status-dot"></span> Open to Opportunities</span>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="theme-toggle" id="themeToggle" title="Toggle theme">
-      <span class="sun">🌞</span>
-      <span class="moon">🌙</span>
-    </div>
-  </header>
+      <div class="theme-toggle" id="themeToggle" title="Toggle theme">
+        <span class="sun">🌞</span>
+        <span class="moon">🌙</span>
+      </div>
+    </header>
 
-  <main>
-    <section>
-      <h2>Background</h2>
-      <p>I am a Software Developer, working since 2014 in Turkiye until relocating to the United Kingdom in May 2021. Throughout my career, I have delivered software solutions across a diverse range of industries, including Automotive, Construction, Hospitality & Retail, Real Estate, and Buying Groups, with recent expertise focusing heavily on the healthcare sector integrated with complex third parties including the NHS.</p>
-      <p>As a full-stack developer, I specialize in building scalable cloud architecture and microservices using a modern tech stack centered around C#, .NET, Node.js, Microsoft Azure, React, and DevOps practices. My approach focuses on creating reliable, high-performance systems that solve complex integration challenges.</p>
-    </section>
+    <main>
+      <section>
+        <h2>Background</h2>
+        <p>I am a Software Developer, working since 2014 in Turkiye until relocating to the United Kingdom in May 2021. Throughout my career, I have delivered software solutions across a diverse range of industries, including Automotive, Construction, Hospitality & Retail, Real Estate, and Buying Groups, with recent expertise focusing heavily on the healthcare sector integrated with complex third parties including the NHS.</p>
+        <p>As a full-stack developer, I specialize in building scalable cloud architecture and microservices using a modern tech stack centered around C#, .NET, Node.js, Microsoft Azure, React, and DevOps practices. My approach focuses on creating reliable, high-performance systems that solve complex integration challenges.</p>
+      </section>
 
-    <section>
-      <h2>Core Focus</h2>
-      <ul>
-        <li><strong>Systems Integration:</strong> Backend mechanics integrated with complex third-party software and healthcare infrastructure.</li>
-        <li><strong>Cloud Infrastructure:</strong> Distributed architectures and microservices utilizing Microsoft Azure and Terraform.</li>
-        <li><strong>Cross-Platform Development:</strong> Desktop and mobile cross-runtime interfaces via React, React Native, and ElectronJS.</li>
-      </ul>
-    </section>
+      <section>
+        <h2>Core Focus</h2>
+        <ul>
+          <li><strong>Systems Integration:</strong> Backend mechanics integrated with complex third-party software and healthcare infrastructure.</li>
+          <li><strong>Cloud Infrastructure:</strong> Distributed architectures and microservices utilizing Microsoft Azure and Terraform.</li>
+          <li><strong>Cross-Platform Development:</strong> Desktop and mobile cross-runtime interfaces via React, React Native, and ElectronJS.</li>
+        </ul>
+      </section>
 
-    <section>
-      <h2>Skills</h2>
-      <p>Microsoft Azure, Terraform, Microservices, .NET / C#, Node.js, NoSQL, Software Documentation, JavaScript, TypeScript, React / React Native, ElectronJS.</p>
-    </section>
+      <section>
+        <h2>Skills</h2>
+        <div class="skills-grid">
+          <span class="skill-chip">C# / .NET</span>
+          <span class="skill-chip">Node.js</span>
+          <span class="skill-chip">Microsoft Azure</span>
+          <span class="skill-chip">Terraform</span>
+          <span class="skill-chip">Microservices</span>
+          <span class="skill-chip">React / React Native</span>
+          <span class="skill-chip">ElectronJS</span>
+          <span class="skill-chip">TypeScript</span>
+          <span class="skill-chip">JavaScript</span>
+          <span class="skill-chip">NoSQL</span>
+          <span class="skill-chip">Software Architecture</span>
+        </div>
+      </section>
 
-    <section>
-      <h2>Languages</h2>
-      <p>English (Professional), Turkish (Native)</p>
-    </section>
+      <section>
+        <h2>Languages</h2>
+        <p><strong>English</strong> (Professional) &nbsp;•&nbsp; <strong>Turkish</strong> (Native)</p>
+      </section>
 
-    <section>
-      <h2>Contact</h2>
-      <p>
-        GitHub: <a href="https://github.com/cinarrtolga" target="_blank" rel="noopener noreferrer">github.com/cinarrtolga</a><br>
-        LinkedIn: <a href="https://uk.linkedin.com/in/tolga-cinar" target="_blank" rel="noopener noreferrer">uk.linkedin.com/in/tolga-cinar</a>
-      </p>
-    </section>
-  </main>
+      <section>
+        <h2>Contact</h2>
+        <div class="contact-links">
+          <a href="https://github.com/cinarrtolga" target="_blank" rel="noopener noreferrer" class="contact-card">
+            <span>🐙 GitHub</span>
+          </a>
+          <a href="https://uk.linkedin.com/in/tolga-cinar" target="_blank" rel="noopener noreferrer" class="contact-card">
+            <span>💼 LinkedIn</span>
+          </a>
+        </div>
+      </section>
+    </main>
 
-  <footer>
-    &copy; 2026 Tolga Cinar
-  </footer>
+    <footer>
+      &copy; 2026 Tolga Cinar. All rights reserved.
+    </footer>
+  </div>
 
   <script>
     const root = document.documentElement;
