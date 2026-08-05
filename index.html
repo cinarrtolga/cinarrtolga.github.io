@@ -16,6 +16,8 @@
       --badge-bg: #21262d;
       --badge-border: rgba(201, 209, 217, 0.1);
       --focus-hover-bg: rgba(88, 166, 255, 0.03);
+      --status-bg: rgba(46, 160, 67, 0.15);
+      --status-fg: #3fb950;
     }
 
     html[data-theme='light'] {
@@ -28,6 +30,8 @@
       --badge-bg: #eaeef2;
       --badge-border: rgba(36, 41, 47, 0.1);
       --focus-hover-bg: rgba(9, 105, 218, 0.02);
+      --status-bg: rgba(26, 127, 55, 0.1);
+      --status-fg: #1a7f37;
     }
 
     /* --- BASE LAYOUT --- */
@@ -85,9 +89,29 @@
     .meta-badges {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      align-items: center;
+      gap: 10px;
       font-size: 0.85rem;
       color: var(--muted);
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: var(--status-bg);
+      color: var(--status-fg);
+      font-weight: 500;
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      background-color: var(--status-fg);
+      border-radius: 50%;
     }
 
     /* --- THEME TOGGLE BUTTON --- */
@@ -301,6 +325,7 @@
       <p>💻 Senior Full Stack Developer</p>
       <div class="meta-badges">
         <span>📍 United Kingdom</span>
+        <span class="status-badge"><span class="status-dot"></span> Open to Opportunities</span>
       </div>
     </div>
     <div class="theme-toggle" id="themeToggle" title="Toggle theme" role="button" aria-label="Toggle theme" tabindex="0">
@@ -312,8 +337,8 @@
   <main>
     <section>
       <h2>Background</h2>
-      <p>I am a professional Software Developer with over a decade of international experience, having worked in Turkiye from 2014 until relocating to the United Kingdom in May 2021. Throughout my career, I have delivered robust software solutions across a diverse range of industries, including Automotive, Construction, Hospitality & Retail, Real Estate, and Buying Groups. My recent expertise focuses heavily on the healthcare sector, developing complex systems integrated with multiple third parties, including the NHS.</p>
-      <p>As a full-stack engineer, I specialize in building scalable cloud architecture and microservices using a modern tech stack centered around C#, .NET, Node.js, Microsoft Azure, React, and DevOps practices. My approach focuses on creating reliable, high-performance systems that solve complex integration challenges.</p>
+      <p>I am a professional Software Developer with over 10 years of international experience, having worked in Turkiye from 2014 until relocating to the United Kingdom in May 2021. Throughout my career, I have delivered robust, high-volume software solutions across a diverse range of industries, including Automotive, Construction, Hospitality & Retail, Real Estate, and Buying Groups. My recent expertise focuses heavily on the healthcare sector, architecting mission-critical systems integrated with complex third parties, including the NHS.</p>
+      <p>As a full-stack engineer, I specialize in building scalable cloud architecture and microservices using a modern tech stack centered around C#, .NET, Node.js, Microsoft Azure, React, and DevOps practices. My approach focuses on creating reliable, high-performance systems that solve complex integration challenges at scale.</p>
     </section>
 
     <section>
@@ -321,7 +346,7 @@
       <div class="focus-container">
         <div class="focus-item">
           <div class="focus-title">Systems Integration</div>
-          <div class="focus-desc">Resilient backend mechanics integrated with complex third-party software.</div>
+          <div class="focus-desc">Resilient backend mechanics integrated with complex third-party software and healthcare infrastructure.</div>
         </div>
         <div class="focus-item">
           <div class="focus-title">Cloud Infrastructure</div>
@@ -335,8 +360,8 @@
     </section>
 
     <section>
-      <h2>Skills</h2>
-      <p class="skills-subtitle">Key technologies, frameworks, and tools used throughout my career.</p>
+      <h2>Skills & Languages</h2>
+      <p class="skills-subtitle">Key technologies, frameworks, and languages used throughout my career.</p>
       
       <div class="skills-group">
         <div class="skills-category-title">Cloud & Architecture</div>
@@ -350,7 +375,7 @@
       <div class="skills-group">
         <div class="skills-category-title">Backend & Database</div>
         <div class="skills-container">
-          <span>.NET</span>
+          <span>.NET / C#</span>
           <span>Node.js</span>
           <span>NoSQL</span>
           <span>Software Documentation</span>
@@ -364,6 +389,14 @@
           <span>TypeScript</span>
           <span>React / React Native</span>
           <span>ElectronJS</span>
+        </div>
+      </div>
+
+      <div class="skills-group">
+        <div class="skills-category-title">Languages</div>
+        <div class="skills-container">
+          <span>English (Professional)</span>
+          <span>Turkish (Native)</span>
         </div>
       </div>
     </section>
