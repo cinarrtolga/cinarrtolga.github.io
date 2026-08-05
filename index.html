@@ -85,47 +85,9 @@
     .meta-badges {
       display: flex;
       flex-wrap: wrap;
-      align-items: center;
       gap: 12px;
       font-size: 0.85rem;
       color: var(--muted);
-    }
-
-    /* --- BUTTONS & CTA --- */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 12px;
-      border-radius: 6px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--fg);
-      background-color: var(--badge-bg);
-      border: 1px solid var(--border);
-      transition: all 0.2s ease;
-      text-decoration: none;
-    }
-
-    .btn:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    .btn-primary {
-      background-color: var(--accent);
-      color: #ffffff;
-      border-color: var(--accent);
-    }
-
-    html[data-theme='light'] .btn-primary {
-      color: #ffffff;
-    }
-
-    .btn-primary:hover {
-      opacity: 0.9;
-      color: #ffffff;
     }
 
     /* --- THEME TOGGLE BUTTON --- */
@@ -229,6 +191,12 @@
     }
 
     /* --- CATEGORIZED SKILLS --- */
+    .skills-subtitle {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin: -0.5rem 0 1.2rem 0;
+    }
+
     .skills-group {
       margin-bottom: 1.2rem;
     }
@@ -270,64 +238,29 @@
       border-color: var(--accent);
     }
 
-    /* --- FEATURED PROJECTS --- */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1rem;
-    }
-
-    .project-card {
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 1rem;
-      background: var(--bg);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: border-color 0.2s ease;
-    }
-
-    .project-card:hover {
-      border-color: var(--accent);
-    }
-
-    .project-title {
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 0.4rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .project-desc {
-      font-size: 0.88rem;
-      color: var(--muted);
-      margin-bottom: 1rem;
-    }
-
-    .project-tags {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-    }
-
-    .project-tag {
-      font-size: 0.75rem;
-      color: var(--accent);
-      background: var(--badge-bg);
-      padding: 2px 8px;
-      border-radius: 4px;
-      border: 1px solid var(--badge-border);
-    }
-
-    /* --- CONTACT SECTION --- */
+    /* --- CONTACT BUTTON STYLES --- */
     .contact-links {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
+    }
+
+    .contact-btn {
+      display: inline-flex;
       align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      background-color: var(--badge-bg);
+      border: 1px solid var(--border);
+      transition: all 0.2s ease;
+    }
+
+    .contact-btn:hover {
+      border-color: var(--accent);
+      text-decoration: none;
     }
 
     footer {
@@ -368,11 +301,9 @@
       <p>💻 Senior Full Stack Developer</p>
       <div class="meta-badges">
         <span>📍 United Kingdom</span>
-        <a href="mailto:your.email@domain.com" class="btn">✉️ Get in Touch</a>
-        <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary">📄 Resume / CV</a>
       </div>
     </div>
-    <div class="theme-toggle" id="themeToggle" title="Toggle theme" role="button" aria-label="Toggle theme">
+    <div class="theme-toggle" id="themeToggle" title="Toggle theme">
       <span class="sun">🌞</span>
       <span class="moon">🌙</span>
     </div>
@@ -390,7 +321,7 @@
       <div class="focus-container">
         <div class="focus-item">
           <div class="focus-title">Systems Integration</div>
-          <div class="focus-desc">Resilient backend mechanics integrated with complex third-party software and healthcare ecosystems (e.g. NHS).</div>
+          <div class="focus-desc">Resilient backend mechanics integrated with complex third-party software.</div>
         </div>
         <div class="focus-item">
           <div class="focus-title">Cloud Infrastructure</div>
@@ -404,43 +335,11 @@
     </section>
 
     <section>
-      <h2>Featured Open Source / Projects</h2>
-      <div class="projects-grid">
-        <div class="project-card">
-          <div>
-            <div class="project-title">
-              <span>Healthcare Integration Service</span>
-              <a href="https://github.com/cinarrtolga" target="_blank" rel="noopener noreferrer">↗</a>
-            </div>
-            <div class="project-desc">Scalable microservice handling third-party integrations with resilient retry mechanisms and queue systems.</div>
-          </div>
-          <div class="project-tags">
-            <span class="project-tag">.NET</span>
-            <span class="project-tag">Azure</span>
-            <span class="project-tag">Microservices</span>
-          </div>
-        </div>
-        <div class="project-card">
-          <div>
-            <div class="project-title">
-              <span>Cross-Platform Desktop Suite</span>
-              <a href="https://github.com/cinarrtolga" target="_blank" rel="noopener noreferrer">↗</a>
-            </div>
-            <div class="project-desc">Lightweight native desktop interface built with Electron and React for real-time data sync.</div>
-          </div>
-          <div class="project-tags">
-            <span class="project-tag">TypeScript</span>
-            <span class="project-tag">React</span>
-            <span class="project-tag">ElectronJS</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
       <h2>Skills</h2>
+      <p class="skills-subtitle">Key technologies, frameworks, and tools used throughout my career.</p>
+      
       <div class="skills-group">
-        <div class="skills-category-title">Cloud & Infrastructure</div>
+        <div class="skills-category-title">Cloud & Architecture</div>
         <div class="skills-container">
           <span>Microsoft Azure</span>
           <span>Terraform</span>
@@ -449,9 +348,9 @@
       </div>
 
       <div class="skills-group">
-        <div class="skills-category-title">Backend & Architecture</div>
+        <div class="skills-category-title">Backend & Database</div>
         <div class="skills-container">
-          <span>.NET / C#</span>
+          <span>.NET</span>
           <span>Node.js</span>
           <span>NoSQL</span>
           <span>Software Documentation</span>
@@ -461,8 +360,8 @@
       <div class="skills-group">
         <div class="skills-category-title">Frontend & Cross-Platform</div>
         <div class="skills-container">
-          <span>TypeScript</span>
           <span>JavaScript</span>
+          <span>TypeScript</span>
           <span>React / React Native</span>
           <span>ElectronJS</span>
         </div>
@@ -472,14 +371,11 @@
     <section>
       <h2>Contact & Profiles</h2>
       <div class="contact-links">
-        <a href="https://github.com/cinarrtolga" target="_blank" rel="noopener noreferrer" class="btn">
+        <a class="contact-btn" href="https://github.com/cinarrtolga" target="_blank">
           🐙 github.com/cinarrtolga
         </a>
-        <a href="https://uk.linkedin.com/in/tolga-cinar" target="_blank" rel="noopener noreferrer" class="btn">
+        <a class="contact-btn" href="https://uk.linkedin.com/in/tolga-cinar" target="_blank">
           💼 uk.linkedin.com/in/tolga-cinar
-        </a>
-        <a href="mailto:your.email@domain.com" class="btn btn-primary">
-          ✉️ Direct Email
         </a>
       </div>
     </section>
