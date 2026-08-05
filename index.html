@@ -9,16 +9,18 @@
       --bg: #0d1117;
       --fg: #c9d1d9;
       --muted: #8b949e;
-      --border: #21262d;
+      --card: #161b22;
+      --border: #30363d;
       --accent: #58a6ff;
       --status-bg: rgba(46, 160, 67, 0.15);
       --status-fg: #3fb950;
     }
 
     html[data-theme='light'] {
-      --bg: #ffffff;
-      --fg: #1f2328;
-      --muted: #656d76;
+      --bg: #f6f8fa;
+      --fg: #24292f;
+      --muted: #57606a;
+      --card: #ffffff;
       --border: #d0d7de;
       --accent: #0969da;
       --status-bg: rgba(26, 127, 55, 0.1);
@@ -31,58 +33,53 @@
 
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background-color: var(--bg);
       color: var(--fg);
       line-height: 1.6;
-      padding: 2.5rem 1.5rem;
-      transition: background-color 0.2s ease, color 0.2s ease;
-    }
-
-    main, header {
-      max-width: 680px;
-      margin: 0 auto;
+      padding: 2rem 1rem;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     header {
-      padding-bottom: 1.5rem;
-      margin-bottom: 2rem;
+      max-width: 760px;
+      margin: 0 auto 1.5rem;
       border-bottom: 1px solid var(--border);
+      padding-bottom: 1.25rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    .header-left {
-      display: flex;
-      align-items: center;
-      gap: 1.25rem;
-    }
-
     header img {
-      width: 72px;
-      height: 72px;
+      width: 76px;
+      height: 76px;
       border-radius: 50%;
       object-fit: cover;
+      border: 1px solid var(--border);
+    }
+
+    .info {
+      flex-grow: 1;
+      padding-left: 1.25rem;
     }
 
     header h1 {
-      font-size: 1.6rem;
-      font-weight: 600;
+      font-size: 1.75rem;
       margin: 0;
       letter-spacing: -0.02em;
     }
 
     header p {
       color: var(--muted);
-      margin: 2px 0 6px 0;
+      margin: 3px 0 6px 0;
       font-size: 0.95rem;
     }
 
     .meta-info {
       display: flex;
-      gap: 10px;
-      font-size: 0.8rem;
+      gap: 12px;
+      font-size: 0.85rem;
       color: var(--muted);
       align-items: center;
     }
@@ -90,12 +87,13 @@
     .status-badge {
       display: inline-flex;
       align-items: center;
-      gap: 5px;
+      gap: 6px;
       background-color: var(--status-bg);
       color: var(--status-fg);
       font-weight: 500;
       padding: 2px 8px;
       border-radius: 12px;
+      font-size: 0.78rem;
     }
 
     .status-dot {
@@ -107,14 +105,15 @@
 
     .theme-toggle {
       cursor: pointer;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       user-select: none;
-      opacity: 0.8;
-      transition: opacity 0.2s ease;
+      padding: 8px;
+      border-radius: 50%;
+      transition: background 0.2s ease;
     }
 
     .theme-toggle:hover {
-      opacity: 1;
+      background-color: var(--card);
     }
 
     .theme-toggle .moon { display: none; }
@@ -122,21 +121,34 @@
     html[data-theme='dark'] .theme-toggle .sun { display: none; }
     html[data-theme='light'] .theme-toggle .sun { display: inline; }
 
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    /* RAFINE KART YAPILARI */
     section {
-      margin-bottom: 2rem;
+      margin-bottom: 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--card);
+      padding: 1.4rem 1.5rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
     }
 
     h2 {
-      font-size: 1.05rem;
+      color: var(--accent);
+      margin-top: 0;
+      font-size: 1.15rem;
       font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--muted);
-      margin: 0 0 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.9rem;
+      letter-spacing: -0.01em;
     }
 
     p {
-      margin: 0 0 1rem 0;
+      margin: 0 0 0.85rem 0;
       font-size: 0.95rem;
     }
     p:last-child { margin-bottom: 0; }
@@ -144,17 +156,18 @@
     ul {
       margin: 0;
       padding-left: 1.2rem;
-      font-size: 0.95rem;
     }
 
     li {
       margin-bottom: 0.5rem;
+      font-size: 0.95rem;
     }
     li:last-child { margin-bottom: 0; }
 
     a {
       color: var(--accent);
       text-decoration: none;
+      font-weight: 500;
     }
 
     a:hover {
@@ -162,24 +175,23 @@
     }
 
     footer {
-      max-width: 680px;
-      margin: 3rem auto 0;
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--border);
+      text-align: center;
       color: var(--muted);
       font-size: 0.8rem;
+      margin-top: 2rem;
     }
 
-    @media (max-width: 520px) {
+    @media (max-width: 600px) {
       header {
         flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
+        text-align: center;
       }
-      .theme-toggle {
-        position: absolute;
-        top: 2.5rem;
-        right: 1.5rem;
+      .info {
+        padding-left: 0;
+        margin: 0.8rem 0;
+      }
+      .meta-info {
+        justify-content: center;
       }
     }
   </style>
@@ -187,15 +199,13 @@
 <body>
 
   <header>
-    <div class="header-left">
-      <img src="pp-web.jpeg" alt="Tolga Cinar">
-      <div class="info">
-        <h1>Tolga Cinar</h1>
-        <p>Senior Full Stack Developer</p>
-        <div class="meta-info">
-          <span>📍 United Kingdom</span>
-          <span class="status-badge"><span class="status-dot"></span> Open to Opportunities</span>
-        </div>
+    <img src="pp-web.jpeg" alt="Tolga Cinar">
+    <div class="info">
+      <h1>Tolga Cinar</h1>
+      <p>Senior Full Stack Developer</p>
+      <div class="meta-info">
+        <span>📍 United Kingdom</span>
+        <span class="status-badge"><span class="status-dot"></span> Open to Opportunities</span>
       </div>
     </div>
     <div class="theme-toggle" id="themeToggle" title="Toggle theme">
