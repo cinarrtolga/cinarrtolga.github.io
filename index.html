@@ -57,6 +57,12 @@
       border-radius: 50%;
       object-fit: cover;
       border: 1px solid var(--border);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    header img:hover {
+      transform: scale(1.03);
+      border-color: var(--accent);
     }
 
     .info {
@@ -79,9 +85,47 @@
     .meta-badges {
       display: flex;
       flex-wrap: wrap;
+      align-items: center;
       gap: 12px;
       font-size: 0.85rem;
       color: var(--muted);
+    }
+
+    /* --- BUTTONS & CTA --- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--fg);
+      background-color: var(--badge-bg);
+      border: 1px solid var(--border);
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background-color: var(--accent);
+      color: #ffffff;
+      border-color: var(--accent);
+    }
+
+    html[data-theme='light'] .btn-primary {
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.9;
+      color: #ffffff;
     }
 
     /* --- THEME TOGGLE BUTTON --- */
@@ -184,11 +228,21 @@
       color: var(--muted);
     }
 
-    /* --- SKILLS GRID & UNIFORM BADGES --- */
-    .skills-subtitle {
-      font-size: 0.9rem;
+    /* --- CATEGORIZED SKILLS --- */
+    .skills-group {
+      margin-bottom: 1.2rem;
+    }
+    .skills-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .skills-category-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
       color: var(--muted);
-      margin: -0.5rem 0 1.2rem 0;
+      margin-bottom: 0.5rem;
     }
 
     .skills-container {
@@ -216,6 +270,66 @@
       border-color: var(--accent);
     }
 
+    /* --- FEATURED PROJECTS --- */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+
+    .project-card {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1rem;
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: border-color 0.2s ease;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent);
+    }
+
+    .project-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .project-desc {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .project-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .project-tag {
+      font-size: 0.75rem;
+      color: var(--accent);
+      background: var(--badge-bg);
+      padding: 2px 8px;
+      border-radius: 4px;
+      border: 1px solid var(--badge-border);
+    }
+
+    /* --- CONTACT SECTION --- */
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
     footer {
       text-align: center;
       color: var(--muted);
@@ -238,6 +352,10 @@
       .meta-badges {
         justify-content: center;
       }
+
+      .contact-links {
+        justify-content: center;
+      }
     }
   </style>
 </head>
@@ -250,9 +368,11 @@
       <p>💻 Senior Full Stack Developer</p>
       <div class="meta-badges">
         <span>📍 United Kingdom</span>
+        <a href="mailto:your.email@domain.com" class="btn">✉️ Get in Touch</a>
+        <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary">📄 Resume / CV</a>
       </div>
     </div>
-    <div class="theme-toggle" id="themeToggle" title="Toggle theme">
+    <div class="theme-toggle" id="themeToggle" title="Toggle theme" role="button" aria-label="Toggle theme">
       <span class="sun">🌞</span>
       <span class="moon">🌙</span>
     </div>
@@ -270,7 +390,7 @@
       <div class="focus-container">
         <div class="focus-item">
           <div class="focus-title">Systems Integration</div>
-          <div class="focus-desc">Resilient backend mechanics integrated with complex third-party software.</div>
+          <div class="focus-desc">Resilient backend mechanics integrated with complex third-party software and healthcare ecosystems (e.g. NHS).</div>
         </div>
         <div class="focus-item">
           <div class="focus-title">Cloud Infrastructure</div>
@@ -284,28 +404,84 @@
     </section>
 
     <section>
+      <h2>Featured Open Source / Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div>
+            <div class="project-title">
+              <span>Healthcare Integration Service</span>
+              <a href="https://github.com/cinarrtolga" target="_blank" rel="noopener noreferrer">↗</a>
+            </div>
+            <div class="project-desc">Scalable microservice handling third-party integrations with resilient retry mechanisms and queue systems.</div>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">.NET</span>
+            <span class="project-tag">Azure</span>
+            <span class="project-tag">Microservices</span>
+          </div>
+        </div>
+        <div class="project-card">
+          <div>
+            <div class="project-title">
+              <span>Cross-Platform Desktop Suite</span>
+              <a href="https://github.com/cinarrtolga" target="_blank" rel="noopener noreferrer">↗</a>
+            </div>
+            <div class="project-desc">Lightweight native desktop interface built with Electron and React for real-time data sync.</div>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">TypeScript</span>
+            <span class="project-tag">React</span>
+            <span class="project-tag">ElectronJS</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
       <h2>Skills</h2>
-      <p class="skills-subtitle">Key technologies, frameworks, and tools used throughout my career.</p>
-      <div class="skills-container">
-        <span>Microsoft Azure</span>
-        <span>.NET</span>
-        <span>JavaScript</span>
-        <span>TypeScript</span>
-        <span>React / React Native</span>
-        <span>Microservices</span>
-        <span>Node.js</span>
-        <span>Terraform</span>
-        <span>NoSQL</span>
-        <span>ElectronJS</span>
-        <span>Software Documentation</span>
+      <div class="skills-group">
+        <div class="skills-category-title">Cloud & Infrastructure</div>
+        <div class="skills-container">
+          <span>Microsoft Azure</span>
+          <span>Terraform</span>
+          <span>Microservices</span>
+        </div>
+      </div>
+
+      <div class="skills-group">
+        <div class="skills-category-title">Backend & Architecture</div>
+        <div class="skills-container">
+          <span>.NET / C#</span>
+          <span>Node.js</span>
+          <span>NoSQL</span>
+          <span>Software Documentation</span>
+        </div>
+      </div>
+
+      <div class="skills-group">
+        <div class="skills-category-title">Frontend & Cross-Platform</div>
+        <div class="skills-container">
+          <span>TypeScript</span>
+          <span>JavaScript</span>
+          <span>React / React Native</span>
+          <span>ElectronJS</span>
+        </div>
       </div>
     </section>
 
     <section>
       <h2>Contact & Profiles</h2>
-      <p>
-        🐙 <a href="https://github.com/cinarrtolga" target="_blank">github.com/cinarrtolga</a> | 💼 <a target="_blank" href="https://uk.linkedin.com/in/tolga-cinar">uk.linkedin.com/in/tolga-cinar</a>
-      </p>
+      <div class="contact-links">
+        <a href="https://github.com/cinarrtolga" target="_blank" rel="noopener noreferrer" class="btn">
+          🐙 github.com/cinarrtolga
+        </a>
+        <a href="https://uk.linkedin.com/in/tolga-cinar" target="_blank" rel="noopener noreferrer" class="btn">
+          💼 uk.linkedin.com/in/tolga-cinar
+        </a>
+        <a href="mailto:your.email@domain.com" class="btn btn-primary">
+          ✉️ Direct Email
+        </a>
+      </div>
     </section>
   </main>
 
